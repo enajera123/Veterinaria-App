@@ -12,11 +12,14 @@ function App() {
 
   useEffect(() => {
     const listPacientes = (() => {
-      const pacientesLS = JSON.parse(localStorage.getItem('pacientes'));
-      console.log(pacientesLS)
-      if (pacientesLS.length > 0) {
-        console.table(pacientesLS)
-        setPacientes(pacientesLS)
+      const data = localStorage.getItem('pacientes')
+      if (data !=null) {
+        const pacientesLS = JSON.parse(data)??[];
+        console.log(pacientesLS)
+        if (pacientesLS.length > 0) {
+          console.table(pacientesLS)
+          setPacientes(pacientesLS)
+        }
       }
     })
     listPacientes();
