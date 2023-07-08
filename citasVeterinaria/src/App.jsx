@@ -10,17 +10,16 @@ function App() {
     setPacientes(pacientesActualizados)
   })
 
-  // useEffect(() => {
-  //     const pacientesLs = JSON.parse(localStorage.getItem('pacientes')) ?? [];
-  //     setPacientes(pacientesLs);
-  // }, [])
-
   useEffect(() => {
+    const listPacientes = (() => {
       const pacientesLS = JSON.parse(localStorage.getItem('pacientes'));
       console.log(pacientesLS)
       if (pacientesLS.length > 0) {
+        console.table(pacientesLS)
         setPacientes(pacientesLS)
       }
+    })
+    listPacientes();
   }, []);
 
   useEffect(() => {
